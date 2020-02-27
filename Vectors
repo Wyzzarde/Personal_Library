@@ -1,0 +1,26 @@
+def get_Vector (p1, p2):
+    diff_vector = []
+    for dim1, dim2 in zip(p1, p2):
+        diff_vector.append(dim1 - dim2)
+    return (diff_vector)
+
+def get_Vector_magnitude (inp_vector):
+    vector_square = []
+    vector_sum = 0
+    for dim in inp_vector:
+        vector_square.append(dim ** 2)
+    for dim in vector_square:
+        vector_sum += dim
+    return (math.sqrt(vector_sum))
+
+def get_vector_angle (v1, v2):
+    v1m = get_Vector_magnitude (v1)
+    v2m = get_Vector_magnitude (v2)
+    vector_dot = 0
+    for dim1, dim2 in zip (v1, v2):
+        vector_dot += dim1*dim2
+    angle = math.acos(vector_dot/(v1m*v2m))
+    angle = math.degrees(angle)
+    if angle > 180:
+        angle = 360 - angle
+    return (angle)
